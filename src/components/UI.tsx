@@ -1,0 +1,5 @@
+import type { PropsWithChildren, ReactNode } from 'react';
+export function PageHeading({title,subtitle,action}:{title:string;subtitle:string;action?:ReactNode}){return <div className="page-heading"><div><h1>{title}</h1><p>{subtitle}</p></div>{action}</div>}
+export function Card({children,className=''}:PropsWithChildren<{className?:string}>){return <section className={'card '+className}>{children}</section>}
+export function Metric({label,value,note}:{label:string;value:string;note:string}){return <Card className="metric"><span className="muted">{label}</span><strong>{value}</strong><small>{note}</small></Card>}
+export function Modal({title,children,onClose}:PropsWithChildren<{title:string;onClose:()=>void}>){return <div className="modal-overlay" onMouseDown={e=>{if(e.target===e.currentTarget)onClose()}}><div className="modal" role="dialog" aria-modal="true" aria-label={title}><div className="modal-head"><h2>{title}</h2><button className="icon-btn" aria-label="Fechar" onClick={onClose}>×</button></div>{children}</div></div>}
